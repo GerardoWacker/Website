@@ -1,17 +1,24 @@
 import React from 'react';
-import { history } from './router';
+import { useRouter, history } from './router';
 
-export default class Link extends React.Component {
+export default function Link({ to, children, state, onClick, ...props }) {
+    const { route } = useRouter();
 
-  render() {
-    let { to, children, state, className, id } = this.props;
+    const handleClick = (e) => {
+        e.preventDefault();
 
-    return <a style={{cursor: "pointer"}} data-target={to} className={className} id={id} onClick={(e) => {
-      e.preventDefault();
-      history.push(to, state??{})
-    }}>
-      {children}
-    </a>
-  }
+        if (route.path === to) {
+            return;
+        }
+        if (onClick) {
+            onClick(e);
+        }
+        history.push(to, state ? state : {});
+    };
 
+    return (
+        <a {...props} onClick={handleClick}>
+            {children}
+        </a>
+    );
 }

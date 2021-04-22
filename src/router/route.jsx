@@ -1,13 +1,12 @@
 import React from 'react';
+import { RouterContext } from './router';
 
-export default class Route extends React.Component{
+export function Route({ path, children }) {
+  const { route } = React.useContext(RouterContext);
 
-  constructor(props) {
-    super(props);
+  if (route.path !== path) {
+    return null;
   }
 
-  render() {
-    return this.props.children;
-  }
-
+  return children;
 }

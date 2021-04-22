@@ -1,63 +1,38 @@
-import React from 'react';
-import { createBrowserHistory } from 'history'
-import Route from './route';
-import { pathToRegexp } from 'path-to-regexp';
+import React, { useContext, useLayoutEffect, useState } from 'react';
+import { createBrowserHistory } from 'history';
+import { locationToRoute } from './Utils';
 
-export const history = createBrowserHistory()
+const history = createBrowserHistory();
+export const RouterContext = React.createContext({
+    route: locationToRoute(history),
+});
 
-export default class Router extends React.Component {
+const RouterProvider = ({ routeList, children }) => {
+    const routes = routeList.map((r) => r.path);
 
-  constructor(props) {
-    super(props);
+    const [route, setRoute] = useState(locationToRoute(history.location));
 
-    this.state = {
-      url: window.location.pathname,
-      state: {}
-    }
-  }
+    const handleRouteChange = ({ location }) => {
+        const route = locationToRoute(location);
+        setRoute(route);
+    };
 
-  componentDidMount = () => {
-    history.listen(e => this.setState(s => s.url != e.location.pathname ? { url: e.location.pathname, state: e.location.state } : s));
-  }
+    const is404 = routes.indexOf(route.path) === -1;
 
-  judgeComponent(component) {
-    if (component == null || component.props == undefined || component.type == Route && !component.props.path) return component;
+    useLayoutEffect(() => {
+        let unlisten = history.listen(handleRouteChange);
+        return () => {
+            unlisten();
+        };
+    }, []);
 
-    const keys = [];
-    let parser = new pathToRegexp(component.props.path ?? "", keys);
-    let similar = parser.exec(this.state.url);
+    return (
+        <RouterContext.Provider value={{ route }}>
+            {is404 ? routeList.find((route) => !route.path).component ?? <p>Not path found</p> : children}
+        </RouterContext.Provider>
+    );
+};
 
-    if (component.type == Route && component.props.path != this.state.url && !similar) return <></>;
+const useRouter = () => useContext(RouterContext);
 
-    const params = keys.reduce((_, curr, index, __) => {
-      m[curr.name] = similar[index + 1];
-      return curr;
-    }, {});
-
-    return similar ? React.cloneElement(component, { path: similar[0], params: params, state: this.state.state }) : component
-  }
-
-  isMatch = () => {
-    window.scrollTo(0, 0);
-    if (Array.isArray(this.props.children)) {
-
-      const childs = this.props.children.map((comp, k) => this.judgeComponent(comp));
-
-      var component = childs.find(c => c.props.path == this.state.url);
-
-      if (component) {
-        const { children, path, params, state } = component.props
-        return React.cloneElement(children, { path, params, state });
-      } else {
-        return childs.find(c => c.type == Route && !c.props.path);
-      }
-    }
-
-    return this.props.children
-  }
-
-  render(props) {
-    return this.isMatch();
-  }
-
-}
+export { useRouter, RouterProvider, history };

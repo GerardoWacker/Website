@@ -8,7 +8,7 @@ import projects from '../../data/projects.json'
 
 const gerarImageURL = "https://i.rar.vg/XXjKAHEUbi5scUeAXGFJqLbZZCR4x2L8.png"
 
-export default class Home extends React.Component {
+export class Home extends React.Component {
   render() {
     return(
       <>

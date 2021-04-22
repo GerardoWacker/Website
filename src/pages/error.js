@@ -4,7 +4,7 @@ import Footer from '../components/footer'
 import Header from '../components/header'
 import './error.css'
 
-export default class AppError extends React.Component {
+export class AppError extends React.Component {
   render() {
     return (
       <section className="error-page">

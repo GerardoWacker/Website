@@ -1,31 +1,56 @@
 {
-  "name": "GerardoWacker",
-  "version": "2021.4.20",
-  "description": "Sitio web personal",
-  "main": "index.js",
-  "scripts": {
-    "dev": "parcel ./public/index.html",
-    "build": "parcel build ./public/index.html --public-url ./ --no-cache --no-source-maps",
-    "test": "parcel ./test/index.html --no-cache"
-  },
-  "browserslist": [
-    "last 1 Chrome versions"
-  ],
-  "author": "Gerardo Wacker (https://github.com/GerardoWacker)",
-  "license": "ISC",
-  "devDependencies": {
-    "history": "^5.0.0",
-    "parcel-bundler": "^1.12.4",
-    "path-to-regexp": "^6.2.0",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1"
-  },
-  "dependencies": {
-    "bootstrap": "^4.6.0",
-    "jquery": "^3.6.0",
-    "normalize.css": "^8.0.1",
-    "popper.js": "^1.16.1",
-    "react-bootstrap": "^1.5.2",
-    "react-icons": "^4.2.0"
-  }
+    "name": "GerardoWacker",
+    "version": "2021.4.22",
+    "description": "Sitio web personal",
+    "main": "index.js",
+    "scripts": {
+        "start": "webpack serve --mode development",
+        "watch": "webpack --watch --mode production",
+        "example": "webpack serve --mode none",
+        "build": "webpack --config webpack.config.js"
+    },
+    "browserslist": [
+        "> 1%, not dead",
+        ">0.2%",
+        "not dead",
+        "not ie <= 11",
+        "not op_mini all"
+    ],
+    "author": "Gerardo Wacker (https://github.com/GerardoWacker)",
+    "license": "GPL-3.0",
+    "devDependencies": {
+        "@babel/core": "^7.13.13",
+        "@babel/plugin-transform-react-constant-elements": "^7.13.13",
+        "@babel/plugin-transform-react-inline-elements": "^7.12.13",
+        "@babel/preset-env": "^7.13.12",
+        "@babel/preset-react": "^7.13.13",
+        "@babel/runtime": "^7.13.10",
+        "@svgr/webpack": "^5.5.0",
+        "babel-loader": "^8.2.2",
+        "clean-webpack-plugin": "^3.0.0",
+        "css-loader": "^5.2.0",
+        "file-loader": "^6.2.0",
+        "history": "^5.0.0",
+        "html-webpack-plugin": "^5.3.1",
+        "mini-css-extract-plugin": "^1.4.0",
+        "optimize-css-assets-webpack-plugin": "^5.0.4",
+        "path": "^0.12.7",
+        "prop-types": "^15.5.10",
+        "querystringify": "^2.2.0",
+        "react": "^17.0.2",
+        "react-dom": "^17.0.2",
+        "style-loader": "^2.0.0",
+        "terser-webpack-plugin": "^5.1.1",
+        "url-loader": "^4.1.1",
+        "webpack": "^5.28.0",
+        "webpack-cli": "^4.6.0",
+        "webpack-dev-server": "^3.11.2"
+    },
+    "dependencies": {
+        "@babel/plugin-proposal-class-properties": "^7.13.0",
+        "@babel/plugin-syntax-dynamic-import": "^7.8.3",
+        "@babel/plugin-transform-runtime": "^7.13.10",
+        "normalize.css": "^8.0.1",
+        "react-icons": "^4.2.0"
+    }
 }
