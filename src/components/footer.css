@@ -1,0 +1,10 @@
+.footer {
+    width: 100%;
+    background-color: var(--push-pr-text);
+    color: var(--push-se-text);
+
+    text-align: center;
+    font-family: 'Poppins', serif;
+    padding: 20px;
+    user-select: none;
+}

@@ -1,0 +1,12 @@
+.error-page .texts {
+    padding: 50px 0px;
+    user-select: none;
+}
+
+.error-page .texts .four-zero-four {
+    font-size: calc(2vw + 2vh); 
+}
+
+.error-page .texts a {
+    color: var(--push-primary)
+}

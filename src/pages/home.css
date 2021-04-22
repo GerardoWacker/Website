@@ -1,0 +1,37 @@
+.section-title {
+    font-family: 'Domine', serif;
+    font-size: calc(2vw + 2vh);
+}
+
+.about-section {
+    padding-top: 30px;
+    display: flex;
+    user-select: none;
+}
+
+.about-section .gerar-photo {
+    display: inline-flex;
+    float: left;
+}
+
+
+@media only screen and (max-width: 800px) {
+    .about-section .gerar-photo {
+        display: none;
+    }
+}
+
+.about-section .gerar-photo img {
+    margin-left: 25px;
+    width: calc(10vw + 5vh);
+}
+
+.about-section .desc-text {
+    float: right;
+}
+
+.projects {
+    padding-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+}
