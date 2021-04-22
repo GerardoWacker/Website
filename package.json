@@ -7,7 +7,7 @@
         "start": "webpack serve --mode development",
         "watch": "webpack --watch --mode production",
         "example": "webpack serve --mode none",
-        "build": "webpack --config webpack.config.js"
+        "build": "webpack --mode production"
     },
     "browserslist": [
         "> 1%, not dead",

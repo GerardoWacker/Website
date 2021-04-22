@@ -1,6 +1,6 @@
 import React, { useContext, useLayoutEffect, useState } from 'react';
 import { createBrowserHistory } from 'history';
-import { locationToRoute } from './Utils';
+import { locationToRoute } from './utils';
 
 const history = createBrowserHistory();
 export const RouterContext = React.createContext({
