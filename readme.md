@@ -11,7 +11,7 @@ The **usual**.
 
 ### 💻 Run development server
 ```shell
-npm run dev
+npm start
 ```
 ### 👷‍♂️ Build
 ```shell
