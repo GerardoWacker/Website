@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import './index.css'
 import { Home } from './pages/home'
 import { AppError } from './pages/error'
 import { RouterProvider } from './router/router';
