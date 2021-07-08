@@ -33,6 +33,11 @@ h1, h2, h3 {
     font-size: calc(1.4vw + 1vh);
 }
 
+.texts-medium {
+    font-family: 'Poppins', sans-serif;
+    font-size: calc(0.8vw + 1vh);
+}
+
 /* Setting global "content" variable */
 .site-content {
     max-width: 56%;
@@ -58,6 +63,10 @@ h1, h2, h3 {
     
     .texts-large {
         font-size: calc(3vw + 1vh);
+    }
+
+    .texts-medium {
+        font-size: calc(2vw + 1vh);
     }
 }
 
